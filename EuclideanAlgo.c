@@ -29,15 +29,56 @@ int computeGCD(int a, int b, int counter){
 	return computeGCD(b,r,++counter);
 }
 
+//commands are as follow
+/*
+1. prompt commands
+2. make cayle table
+3. euclidean gcd
+4. done
+*/
+void prompt_commands(){
+	printf("Here are the commands: \n");
+}
+
+void make_cayle_table(){
+	printf("Making cayle...\n");
+}
+
+void euclidean_gcd(){
+	printf("doing GCD stuff...\n");
+}
+
+int handle_commands(){
+/*Developer input: We can use fsm and use function pointers to invoke a function based on user input*/
+	
+	char command[128];
+
+	while(read(1, command, sizeof(command)) > 0){
+		if(strcmp(command, "commands") == 0)
+			prompt_commands();
+		else if(strcmp(command, "cayle") == 0)
+			make_cayle_table();
+		else if(strcmp(command, "gcd") == 0)
+			euclidean_gcd();
+		else 
+			fprintf(stderr, "\x1b[31mInvalid input at file %d line %d.. Enter <commands> to see the list of commands.",__FILE__, __LINE__);
+		memset(&command, 0, sizeof(command));
+	}
+
+	return 0; //when done
+}
+
 int main(int argc, char *argv[]){
-	int a , b, GCD;
+	char command[128];	//input buffer
 	//validate input
 	if(argc < 3){
 		fprintf(stderr, "\x1b[31mInvalid input at file %d line %d. Form: ./EuclideanAlgo arg1 arg2 \x1b[0m \n", __FILE__, __LINE__);
 		exit(0);
+	}else if(handle_commands() == 0){
+		exit(0); 	//done
 	}
 
-
+	/*
 	a = atoi(argv[1]);
 	b = atoi(argv[2]);
 	printf("Computing for %s & %s\n", argv[1], argv[2]);
@@ -45,5 +86,7 @@ int main(int argc, char *argv[]){
 	GCD = computeGCD(a, b, 1);
 
 	printf("Your GCD is: %d\n", GCD);
+	*/
+	return 0;
 }
 

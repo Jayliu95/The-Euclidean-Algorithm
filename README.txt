@@ -21,3 +21,12 @@ Q = 1 , R = 78
 270 = 192 * 1 + 78
 //Note GCD(270,192) = GCD(192,78)
 Here B = A and R = B
+
+
+/***************************************************************
+[Modular Inverses]
+	-The modular inverse of A(mod C) is A^-1
+	-(A*A^-1) ≡ 1(mod C) <=> or equivalently (A * A^-1)mod C = 1
+	-Only the numbers COPRIME to C (numbers that share no prime factors with C) have a modular inverse(mod C) 
+***************************************************************/
+
